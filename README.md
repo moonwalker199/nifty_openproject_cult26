@@ -2,7 +2,9 @@
 
 AI-Powered Investment Intelligence Platform built using historical NIFTY-50 market data.
 
-Developed for the **Data-Driven Investment Intelligence Using NIFTY-50 Market Data Challenge**.
+Developed for the **Data-Driven Investment Intelligence Using NIFTY-50 Market Data Challenge**. <br>
+Developed as a part of Open Projects 2025 floated by Cult Council IIT Roorkee. <br>
+Developed by Debangan Sarkar, 23117043, debangan_s@me.iitr.ac.in
 
 ---
 
@@ -295,31 +297,3 @@ No external APIs or live market data are used.
 
 ---
 
-## Challenge Compliance
-
-This solution follows all competition constraints:
-
-### Allowed
-
-- Historical market data
-- Feature engineering
-- Technical indicators
-- Machine learning
-- Portfolio optimization
-- Risk analytics
-
-### Not Used
-
-- Live market data
-- Financial APIs
-- News datasets
-- Social media sentiment
-- Proprietary datasets
-
----
-
-## Authors
-
-Team Name: InvestIQ
-
-Data-Driven Investment Intelligence Using NIFTY-50 Market Data Challenge
