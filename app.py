@@ -99,7 +99,7 @@ c5.metric(
     "Max Drawdown",
     round(
         risk_metrics[
-            "Maximum_Drawdown"
+            "Max_Drawdown"
         ],
         3
     )
@@ -186,42 +186,7 @@ st.write(summary)
 
 st.header("Investment Insights")
 
-st.subheader(
-    "Explainable AI"
-)
 
-trend_explanation = (
-    Explainability
-    .explain_trend(
-        stock_df
-    )
-)
-
-risk_explanation = (
-    Explainability
-    .explain_risk(
-        risk_metrics
-    )
-)
-
-prediction_explanation = (
-    Explainability
-    .explain_prediction(
-        prediction
-    )
-)
-
-st.info(
-    trend_explanation
-)
-
-st.info(
-    risk_explanation
-)
-
-st.info(
-    prediction_explanation
-)
 
 volatility = risk_metrics["Volatility"]
 sharpe = risk_metrics["Sharpe_Ratio"]
@@ -252,14 +217,14 @@ elif risk_metrics["Sharpe_Ratio"] > 0.5:
     st.info("HOLD: Moderate return potential.")
 else:
     st.warning("AVOID: Weak historical performance and risk profile.")
-
-
 st.header("Explainable AI")
 
-trend_exp = ExplainabilityEngine.trend_explanation(stock_df)
+trend_exp = ExplainabilityEngine.trend_explanation(
+    stock_df
+)
+
 risk_exp = ExplainabilityEngine.risk_explanation(
-    risk_metrics["Beta"],
-    risk_metrics["Volatility"]
+    risk_metrics
 )
 
 st.subheader("Trend Explanation")
@@ -268,34 +233,13 @@ st.write(trend_exp)
 st.subheader("Risk Explanation")
 st.write(risk_exp)
 
-prediction_reason = ExplainabilityEngine.prediction_explanation(
-    prediction["Prediction"],
-    risk_metrics["Sharpe_Ratio"]
+prediction_reason = (
+    ExplainabilityEngine.prediction_explanation(
+        prediction
+    )
 )
 
 st.info(prediction_reason)
-
-st.header("Technical Indicators")
-
-stock_df["MA20"] = stock_df["Close"].rolling(20).mean()
-stock_df["MA50"] = stock_df["Close"].rolling(50).mean()
-
-indicator_df = stock_df[["Date", "Close", "MA20", "MA50"]]
-
-st.line_chart(indicator_df.set_index("Date"))
-
-
-st.header("Market Anomaly Detection")
-
-stock_df["Daily_Return"] = stock_df["Close"].pct_change()
-
-anomalies = stock_df[abs(stock_df["Daily_Return"]) > 0.05]
-
-st.metric("Detected Anomalies", len(anomalies))
-
-if len(anomalies) > 0:
-    st.dataframe(anomalies[["Date", "Close", "Volume"]].tail(10))
-
 
 st.header("Portfolio Risk Profile")
 
